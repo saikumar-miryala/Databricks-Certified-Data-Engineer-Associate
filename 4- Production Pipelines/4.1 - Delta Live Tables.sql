@@ -16,6 +16,7 @@
 
 SET datasets.path=dbfs:/mnt/demo-datasets/bookstore;
 
+
 -- COMMAND ----------
 
 -- MAGIC %md

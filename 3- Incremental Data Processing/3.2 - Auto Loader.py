@@ -50,6 +50,11 @@ display(files)
 
 # COMMAND ----------
 
+# MAGIC %sql
+# MAGIC INSERT into orders_updates(order_id,customer_id) values("1234","456")
+
+# COMMAND ----------
+
 # MAGIC %md
 # MAGIC
 # MAGIC ## Landing New Files
@@ -93,3 +98,7 @@ display(files)
 # COMMAND ----------
 
 dbutils.fs.rm("dbfs:/mnt/demo/orders_checkpoint", True)
+
+# COMMAND ----------
+
+

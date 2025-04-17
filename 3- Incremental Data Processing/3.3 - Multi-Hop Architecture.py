@@ -162,6 +162,12 @@ load_new_data()
 
 # COMMAND ----------
 
+# MAGIC %sql
+# MAGIC DESCRIBE DETAIL daily_customer_books;
+# MAGIC
+
+# COMMAND ----------
+
 (spark.table("daily_customer_books_tmp")
       .writeStream
       .format("delta")
@@ -191,3 +197,7 @@ for s in spark.streams.active:
     print("Stopping stream: " + s.id)
     s.stop()
     s.awaitTermination()
+
+# COMMAND ----------
+
+
