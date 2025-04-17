@@ -8,6 +8,7 @@ USE CATALOG hive_metastore
 
 -- COMMAND ----------
 
+-- Creating table using delta as defaut format in databricks.
 CREATE TABLE employees
   (id INT, name STRING, salary DOUBLE);
 
@@ -113,7 +114,76 @@ DESCRIBE HISTORY employees
 
 -- COMMAND ----------
 
--- MAGIC %fs head 'dbfs:/user/hive/warehouse/employees/_delta_log/00000000000000000005.json'
+-- MAGIC %fs head 'dbfs:/user/hive/warehouse/employees/_delta_log/00000000000000000006.json'
+
+-- COMMAND ----------
+
+select * from employees @v2
+
+-- COMMAND ----------
+
+VACUUM employees;
+
+-- COMMAND ----------
+
+-- MAGIC %fs ls 'dbfs:/user/hive/warehouse/employees/'
+
+-- COMMAND ----------
+
+SELECT * FROM employees;
+
+-- COMMAND ----------
+
+RESTORE TABLE employees VERSION AS OF 5;
+
+-- COMMAND ----------
+
+DESCRIBE DETAIL EMPLOYEES;
+
+-- COMMAND ----------
+
+OPTIMIZE EMPLOYEES 
+ZORDER BY ID;
+
+-- COMMAND ----------
+
+-- MAGIC %fs ls 'dbfs:/user/hive/warehouse/employees/'
+
+-- COMMAND ----------
+
+DESCRIBE DETAIL EMPLOYEES;
+
+-- COMMAND ----------
+
+VACUUM EMPLOYEES RETAIN 0 HOURS;
+
+-- COMMAND ----------
+
+SET spark.databricks.delta.retentionDurationCheck.enabled = false
+
+-- COMMAND ----------
+
+DESCRIBE DETAIL employees;
+
+-- COMMAND ----------
+
+DESCRIBE HISTORY employees;
+
+-- COMMAND ----------
+
+-- MAGIC %fs ls 'dbfs:/user/hive/warehouse/employees'
+
+-- COMMAND ----------
+
+SELECT * from employees VERSION AS OF 5;
+
+-- COMMAND ----------
+
+DROP TABLE employees
+
+-- COMMAND ----------
+
+-- MAGIC %fs ls 'dbfs:/user/hive/warehouse/employees'
 
 -- COMMAND ----------
 

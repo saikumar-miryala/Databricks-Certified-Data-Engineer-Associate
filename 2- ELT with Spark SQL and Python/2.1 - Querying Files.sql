@@ -169,3 +169,7 @@ SELECT * FROM books
 -- COMMAND ----------
 
 DESCRIBE EXTENDED books
+
+-- COMMAND ----------
+
+

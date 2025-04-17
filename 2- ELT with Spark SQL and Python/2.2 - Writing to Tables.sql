@@ -20,6 +20,10 @@ SELECT * FROM orders
 
 -- COMMAND ----------
 
+DESCRIBE EXTENDED  orders;
+
+-- COMMAND ----------
+
 -- MAGIC %md
 -- MAGIC ## Overwriting Tables
 
@@ -97,3 +101,7 @@ USING books_updates u
 ON b.book_id = u.book_id AND b.title = u.title
 WHEN NOT MATCHED AND u.category = 'Computer Science' THEN 
   INSERT *
+
+-- COMMAND ----------
+
+
