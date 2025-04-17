@@ -131,3 +131,7 @@
 # MAGIC %sql
 # MAGIC SELECT *
 # MAGIC FROM author_counts
+
+# COMMAND ----------
+
+

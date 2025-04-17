@@ -25,7 +25,7 @@ SELECT
   order_id,
   books,
   FILTER (books, i -> i.quantity >= 2) AS multiple_copies
-FROM orders
+FROM orders GROUP BY order_id, books
 
 -- COMMAND ----------
 
@@ -99,3 +99,7 @@ FROM customers
 
 DROP FUNCTION get_url;
 DROP FUNCTION site_type;
+
+-- COMMAND ----------
+
+

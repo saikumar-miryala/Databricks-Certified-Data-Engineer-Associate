@@ -173,3 +173,7 @@ SELECT * FROM (
 );
 
 SELECT * FROM transactions
+
+-- COMMAND ----------
+
+
